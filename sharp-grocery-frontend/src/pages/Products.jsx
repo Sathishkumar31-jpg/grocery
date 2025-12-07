@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../api";
 import ProductCard from "../components/ProductCard";
-import { products as localProducts } from "../data/products";
+// import { products as localProducts } from "../data/products";
 import toast from "react-hot-toast";
 
 export default function Products() {
@@ -11,7 +11,7 @@ export default function Products() {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const res = await API.get("/products");
+        const res = await API.get("/products/fetch");
         setProducts(res.data);
       } catch (err) {
         console.error("Error loading products:", err);
@@ -19,9 +19,6 @@ export default function Products() {
     };
     loadProducts();
   }, []);
-  useEffect(() => {
-    setProducts(localProducts)
-  })
 
   // Filter logic
   const filteredProducts =

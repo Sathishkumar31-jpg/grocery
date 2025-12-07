@@ -22,10 +22,10 @@
 
 // export default function Navbar() {
 //   return (
-    
+
 //     <nav className="bg-green-600 text-white p-4 shadow">
 //       <div className="flex justify-between items-center container mx-auto">
-      
+
 
 
 //         <Link to="/" className="text-xl font-bold">
@@ -89,6 +89,10 @@ export default function Navbar() {
   const { cartCount } = useCart();
   const { balance } = useWallet();
 
+
+
+
+
   return (
     <nav className="bg-green-600 text-white p-4 shadow">
       <div className="container mx-auto flex justify-between items-center">
@@ -106,6 +110,23 @@ export default function Navbar() {
           <Link to="/products" className="hover:text-gray-200">Products</Link>
 
           <Link to="/login" className="hover:text-gray-200">Login</Link>
+
+          {/* {localStorage.getItem("token") ? (
+            <button
+            onClick={handleLogout}
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+            >
+              Login
+            </Link>
+          )} */}
+
 
           {/* Wallet Button with Balance */}
           <Link
