@@ -17,7 +17,7 @@ connectDB();
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
+app.use("/products", productRoutes);
 
 app.get("/", (req, res) => {
   res.send("Grocery Backend Running...");

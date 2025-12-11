@@ -129,17 +129,17 @@ export default function Navbar() {
 
 
           {/* Wallet Button with Balance */}
-          <Link
+          {/* <Link
             to="/wallet"
             className="px-4 py-2 bg-white text-green-700 rounded-lg font-semibold hover:bg-gray-100"
           >
             Wallet: {balance} SHARP
-          </Link>
+          </Link> */}
 
           {/* Cart Button with Count */}
           <Link
             to="/cart"
-            className="relative hover:text-gray-200 text-lg font-semibold"
+            className="px-4 py-2 bg-white text-green-700 rounded-lg font-semibold hover:bg-gray-100"
           >
             Cart
             {/* <span className="absolute -top-3 -right-4 bg-white text-green-700 font-bold px-2 py-0.5 rounded-full text-sm">

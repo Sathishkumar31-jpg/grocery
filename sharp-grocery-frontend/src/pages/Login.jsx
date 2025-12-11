@@ -26,7 +26,8 @@ export default function Login() {
       const res = await API.post("/auth/login", { email, password });
 
       localStorage.setItem("token", res.data.token);
-      // alert("Login Successful!");
+      // Store email
+    localStorage.setItem("userEmail", email);
       toast.success("Login Success")
       navigate("/");
     } catch (err) {
@@ -37,6 +38,7 @@ export default function Login() {
   const handleLogout = async (e) => {
     try {
       localStorage.removeItem("token");
+      localStorage.removeItem("userEmail");
       toast.success("Logged out succesfully");
       navigate("/");
     } catch (error) {

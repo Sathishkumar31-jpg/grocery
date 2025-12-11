@@ -46,16 +46,19 @@
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useWallet } from "../context/walletcontext";
+import { useCart } from "../context/CartContext";
 
 export default function Checkout() {
   const [cart, setCart] = useState([]);
   const [wallet, setWallet] = useState(0);
+  const navigate = useNavigate();
   // const [total, setTotal] = useState(0);
   const location = useLocation();
   const total = location.state?.total || 0;
   const walletBalance = Number(localStorage.getItem("wallet_balance")) || 0;
+  const { clearCart } = useCart();
 
 
   console.log(total);
@@ -85,6 +88,8 @@ export default function Checkout() {
     useWallet,
 
     toast.success("Payment Success")
+    clearCart();
+    navigate("/")
   };
 
 
@@ -128,7 +133,7 @@ export default function Checkout() {
 
         <div className="flex justify-between py-2 text-lg">
           <span>Wallet Balance:</span>
-          <span className="text-blue-600 font-bold">{walletBalance} SHARP</span>
+          <span className="text-blue-600 font-bold cursor pointer" onClick={()=> navigate("/wallet")}>{walletBalance} SHARP</span>
         </div>
 
         {/* <div className="flex justify-between py-2 text-lg">

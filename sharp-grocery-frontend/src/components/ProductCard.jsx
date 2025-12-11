@@ -52,7 +52,7 @@ export default function ProductCard({ product }) {
         <button
           onClick={() => {
             addToCart(product);
-            toast.success(`${product.name} added to cart`);
+            // toast.success(`${product.name} added to cart`);
           }}
           className="px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700"
         >

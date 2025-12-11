@@ -4,6 +4,7 @@ import { useCart } from "../context/CartContext";
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useCart();
   const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("userEmail") !== null;
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
@@ -59,11 +60,15 @@ export default function CartPage() {
             </button>
 
             <button
-              onClick={() => navigate("/checkout", { state: { total} })}
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              disabled={!isLoggedIn}
+              onClick={() => navigate("/checkout", { state: { total } })}
+              className={`px-4 py-2 rounded 
+    ${isLoggedIn ? "bg-green-600 hover:bg-green-700 text-white" : "bg-gray-400 cursor-not-allowed"}
+  `}
             >
-              Checkout
+              {isLoggedIn ? "Checkout" : "Login to Checkout"}
             </button>
+
           </div>
         </>
       )}

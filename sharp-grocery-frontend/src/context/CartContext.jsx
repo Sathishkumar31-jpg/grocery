@@ -61,25 +61,31 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-    const exists = cart.find((item) => item.id === product.id);
+    const exists = cart.find((item) => item._id === product._id);
 
     if (exists) {
       setCart(
         cart.map((item) =>
-          item.id === product.id
+          item._id === product._id
             ? { ...item, qty: item.qty + 1 }
             : item
-        )
-      );
-      toast.success(`${product.name} added to cart`)
+          )
+        );
+        toast.success(`${product.name} quantity updated`);
     } else {
       setCart([...cart, { ...product, qty: 1 }]);
+      toast.success(`${product.name} added to cart`);
     }
   };
 
+
+
+
+
   const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart(cart.filter((item) => item._id !== id));
   };
+
 
   const clearCart = () => setCart([]);
 
